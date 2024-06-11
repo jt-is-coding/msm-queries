@@ -47,9 +47,8 @@
         <td><%= a_movie.year %></td>
         <td>
             <% example = Director.where({ :id => a_movie.director_id }) %>
-            <% example.each do |director| %>
-                <%= director.name %>
-            <% end %>
+            <% the_director = example.at(0) %>
+            <%= the_director.name %>
         </td>
         <td><a href="/movies/<%= a_movie.id %>">Show details</a></td>
     </tr>
