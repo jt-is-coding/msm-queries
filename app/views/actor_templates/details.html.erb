@@ -37,5 +37,32 @@
         <th></th>
     </tr>
 
+    <% matching_actor.each do |a_character| %>
+    <tr>
+        <td>
+            <% example = Movie.where({ :id => a_character.movie_id }) %>
+            <% the_movie = example.at(0) %>
+            <%= the_movie.title %>
+        </td>
+        <td>
+            <% example = Movie.where({ :id => a_character.movie_id }) %>
+            <% the_movie = example.at(0) %>
+            <%= the_movie.year %>
+        </td>
+        <td>
+            <% example = Movie.where({ :id => a_character.movie_id }) %>
+            <% the_movie = example.at(0) %>
+            <% example_2 = Director.where({ :id => the_movie.director_id }) %>
+            <% the_director = example_2.at(0) %>
+            <%= the_director.name %>
+        </td>
+        <td><%= a_character.name %></td>
+        <td>
+            <% example = Movie.where({ :id => a_character.movie_id }) %>
+            <% the_movie = example.at(0) %>
+            <a href="/movies/<%= the_movie.id %>">Show details</a>
+        </td>
+    </tr>
+    <% end%>
 
 </table>
